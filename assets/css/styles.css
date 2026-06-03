@@ -1105,7 +1105,48 @@ strong { font-weight: 600; color: var(--ivory); }
 .footer__links a { font-size: .875rem; color: var(--ivory-dim); transition: color var(--transition); }
 .footer__links a:hover { color: var(--gold-light); }
 .footer__contact > p { font-size: .875rem; color: var(--ivory-deep); margin-bottom: 1.25rem; }
+.footer__contact-info {
+  display: flex; flex-direction: column; gap: .4rem; margin-top: 1rem; margin-bottom: .5rem;
+}
+.footer__contact-info a {
+  font-size: .85rem; color: var(--ivory-mid);
+  transition: color var(--transition); letter-spacing: .03em;
+}
+.footer__contact-info a:hover { color: var(--gold-light); }
+
 .footer__regions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem; }
+
+/* Direct contact block in contact section */
+.contact__direct {
+  background: var(--night);
+  border: 1px solid var(--border-gold-strong);
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.contact__direct::before { content: ''; position: absolute; inset: 5px; border: 1px solid var(--border-gold-dim); pointer-events: none; }
+.contact__direct::after {
+  content: '◆  DIRECT CONTACT  ◆';
+  position: absolute; top: -1px; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-sans); font-size: .62rem; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); background: var(--night); padding: 0 1rem;
+  white-space: nowrap;
+}
+.contact__direct-link {
+  display: flex; align-items: center; gap: 1rem;
+  color: var(--ivory-mid); font-size: .9375rem;
+  transition: color var(--transition);
+}
+.contact__direct-link:hover { color: var(--gold-light); }
+.contact__direct-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border: 1px solid var(--border-gold);
+  color: var(--gold); font-size: .9rem;
+  display: flex; align-items: center; justify-content: center;
+}
 .footer__regions span { font-size: .8125rem; color: var(--ivory-deep); }
 .footer__bottom { padding: 1.5rem 2rem; text-align: center; max-width: var(--container); margin: 0 auto; }
 .footer__bottom p { font-size: .75rem; color: var(--ivory-deep); opacity: .4; letter-spacing: .08em; }
