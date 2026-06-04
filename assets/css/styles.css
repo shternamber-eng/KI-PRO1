@@ -1860,3 +1860,302 @@ strong { font-weight: 600; color: var(--ivory); }
 .dedication-card{ background-color: var(--obsidian); }
 .how-step       { background-color: var(--obsidian); }
 .material-card  { background-color: var(--obsidian); }
+
+/* ================================================================
+   SEATING PAGE — Project 60 four-series layout
+   ================================================================ */
+
+/* Active nav link */
+.nav__active { color: var(--gold) !important; }
+
+/* Four-series overview grid */
+.seating-series-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.seating-series-card {
+  background-color: var(--mahogany);
+  border: 1px solid var(--border-gold-dim);
+  padding: 2rem 1.75rem;
+  position: relative;
+  background-image: var(--fc-tl), var(--fc-tr), var(--fc-bl), var(--fc-br);
+  background-repeat: no-repeat;
+  background-size: 36px 36px;
+  background-position:
+    left 7px top 7px,
+    right 7px top 7px,
+    left 7px bottom 7px,
+    right 7px bottom 7px;
+}
+.seating-series-card--featured {
+  background-color: var(--deep);
+  border-color: var(--border-gold-strong);
+}
+.seating-series-card__badge {
+  font-family: var(--font-sans);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .75rem;
+}
+.seating-series-card__name {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--ivory);
+  margin-bottom: .3rem;
+}
+.seating-series-card__tagline {
+  font-size: .85rem;
+  color: var(--gold-light);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.seating-series-card p {
+  font-size: .9rem;
+  color: var(--ivory-mid);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Series split layout */
+.series-section { padding: 6rem 0; }
+.series-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.series-split--reverse { direction: rtl; }
+.series-split--reverse > * { direction: ltr; }
+.series-split__media img {
+  width: 100%;
+  border: 1px solid var(--border-gold-dim);
+  display: block;
+  object-fit: cover;
+}
+.series-split__title {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--ivory);
+  line-height: 1.1;
+  margin: .5rem 0 .5rem;
+}
+.series-split__lead {
+  font-style: italic;
+  color: var(--gold-light);
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+.series-star { color: var(--gold); }
+.series-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+.series-features li {
+  padding: .55rem 0 .55rem 1.4rem;
+  border-bottom: 1px solid rgba(200,160,48,.12);
+  font-size: .95rem;
+  color: var(--ivory-mid);
+  line-height: 1.5;
+  position: relative;
+}
+.series-features li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  opacity: .7;
+}
+.series-note {
+  background: rgba(200,160,48,.07);
+  border-left: 2px solid var(--gold);
+  padding: .9rem 1.2rem;
+  font-size: .88rem;
+  color: var(--ivory-mid);
+  line-height: 1.55;
+  font-style: italic;
+}
+.series-models {
+  margin: 1.25rem 0 1rem;
+  border: 1px solid var(--border-gold-dim);
+}
+.series-model-row {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding: .55rem 1rem;
+  border-bottom: 1px solid rgba(200,160,48,.1);
+  font-size: .88rem;
+  color: var(--ivory-mid);
+}
+.series-model-row:last-child { border-bottom: none; }
+.series-model-code {
+  font-family: var(--font-serif);
+  color: var(--gold);
+  min-width: 5rem;
+  font-weight: 600;
+  font-size: .9rem;
+}
+.series-dims {
+  font-size: .8rem;
+  color: var(--ivory-dim);
+  margin: .5rem 0 1rem;
+}
+
+/* Series photo gallery */
+.series-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.series-gallery img {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--border-gold-dim);
+  object-fit: cover;
+}
+.series-gallery--single { grid-template-columns: 1fr 1fr; }
+
+/* Which series — comparison image + column selector */
+.comparison-wrap { margin-bottom: 3rem; text-align: center; }
+.comparison-img {
+  max-width: 800px;
+  width: 100%;
+  border: 1px solid var(--border-gold-dim);
+  display: inline-block;
+}
+.seating-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border-gold-dim);
+  margin-top: 2rem;
+}
+.seating-selector__col {
+  padding: 1.75rem 1.5rem;
+  border-right: 1px solid var(--border-gold-dim);
+}
+.seating-selector__col:last-child { border-right: none; }
+.seating-selector__col--featured {
+  background: rgba(200,160,48,.06);
+  border-right-color: var(--border-gold);
+  border-left: 1px solid var(--border-gold);
+}
+.seating-selector__head {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+  padding-bottom: .6rem;
+  border-bottom: 1px solid var(--border-gold-dim);
+}
+.seating-selector ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.seating-selector li {
+  font-size: .85rem;
+  color: var(--ivory-mid);
+  padding: .35rem 0;
+  border-bottom: 1px solid rgba(200,160,48,.07);
+}
+
+/* Customization cards */
+.custom-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.custom-card {
+  background-color: var(--obsidian);
+  border: 1px solid var(--border-gold-dim);
+  padding: 1.75rem;
+}
+.custom-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--ivory);
+  margin-bottom: .25rem;
+}
+.custom-card__subtitle {
+  font-size: .8rem;
+  color: var(--gold);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.custom-card p {
+  font-size: .88rem;
+  color: var(--ivory-mid);
+  line-height: 1.6;
+  margin: 0;
+}
+.custom-card__swatches {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(200,160,48,.3);
+  display: block;
+}
+.custom-photo-wrap { text-align: center; }
+.custom-photo-wrap img {
+  max-width: 700px;
+  width: 100%;
+  border: 1px solid var(--border-gold-dim);
+  display: inline-block;
+}
+
+/* Every seat matters section */
+.esm-regions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.esm-region {
+  padding: .75rem 1rem;
+  border: 1px solid var(--border-gold-dim);
+  font-size: .85rem;
+}
+.esm-region strong {
+  display: block;
+  color: var(--gold-light);
+  margin-bottom: .2rem;
+  font-family: var(--font-serif);
+}
+.esm-region span { color: var(--ivory-mid); }
+
+/* Responsive — seating page */
+@media (max-width: 1100px) {
+  .seating-series-grid { grid-template-columns: repeat(2, 1fr); }
+  .custom-grid          { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .series-split         { grid-template-columns: 1fr; gap: 2.5rem; }
+  .series-split--reverse { direction: ltr; }
+  .seating-selector     { grid-template-columns: repeat(2, 1fr); }
+  .seating-selector__col { border-bottom: 1px solid var(--border-gold-dim); }
+  .seating-selector__col--featured { border-left: none; }
+  .esm-regions          { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .seating-series-grid  { grid-template-columns: 1fr; }
+  .custom-grid          { grid-template-columns: 1fr; }
+  .seating-selector     { grid-template-columns: 1fr; }
+  .series-gallery       { grid-template-columns: 1fr; }
+}
