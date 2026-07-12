@@ -1173,6 +1173,22 @@ strong { font-weight: 600; color: var(--ivory); }
 .page-hero h1 { color: var(--ivory); font-size: clamp(2.5rem, 5vw, 3.75rem); margin-bottom: 1.25rem; }
 .page-hero p  { color: var(--ivory-dim); font-size: 1.0625rem; max-width: 640px; line-height: 1.8; }
 
+/* Missing background photo — injected by main.js when the image 404s */
+.bg-photo-missing__badge {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  padding: .5rem 1.1rem;
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  background: rgba(6,4,2,.8);
+  border: 1px solid var(--border-gold-strong);
+  z-index: 3;
+  pointer-events: none;
+}
+
 /* ================================================================
    COMPLETE PACKAGE PAGE
    ================================================================ */

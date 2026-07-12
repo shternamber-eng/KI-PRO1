@@ -13,29 +13,44 @@ if (nav) {
 
 // --- Mobile menu toggle ---
 if (navToggle && navLinks) {
-  navToggle.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    const [s1, , s2] = navToggle.querySelectorAll('span');
-    const mid = navToggle.querySelectorAll('span')[1];
+  let lockedScrollY = 0;
+
+  const lockBodyScroll = () => {
+    lockedScrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top    = `-${lockedScrollY}px`;
+    document.body.style.width  = '100%';
+  };
+
+  const unlockBodyScroll = () => {
+    document.body.style.position = '';
+    document.body.style.top      = '';
+    document.body.style.width    = '';
+    window.scrollTo({ top: lockedScrollY, behavior: 'instant' });
+  };
+
+  const setMenuOpen = (open) => {
+    navLinks.classList.toggle('open', open);
+    const [s1, mid, s2] = navToggle.querySelectorAll('span');
     if (open) {
       s1.style.transform  = 'rotate(45deg) translate(5px, 5px)';
       mid.style.opacity   = '0';
       s2.style.transform  = 'rotate(-45deg) translate(5px, -5px)';
+      lockBodyScroll();
     } else {
       s1.style.transform  = '';
       mid.style.opacity   = '';
       s2.style.transform  = '';
+      unlockBodyScroll();
     }
+  };
+
+  navToggle.addEventListener('click', () => {
+    setMenuOpen(!navLinks.classList.contains('open'));
   });
 
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.querySelectorAll('span').forEach(s => {
-        s.style.transform = '';
-        s.style.opacity   = '';
-      });
-    });
+    link.addEventListener('click', () => setMenuOpen(false));
   });
 }
 
@@ -150,4 +165,37 @@ document.querySelectorAll('.form__file-area input[type="file"]').forEach(input =
       label.textContent = '📎 ' + input.files[0].name;
     }
   });
+});
+
+// --- Missing photo fallback: "Coming Soon" placeholder ---
+const comingSoonSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+  <rect width="800" height="600" fill="#14090a"/>
+  <rect x="16" y="16" width="768" height="568" fill="none" stroke="#c8a030" stroke-opacity="0.35"/>
+  <text x="400" y="284" font-family="Georgia, serif" font-size="16" letter-spacing="12" fill="#c8a030" text-anchor="middle">&#9670;</text>
+  <text x="400" y="330" font-family="Georgia, serif" font-size="28" letter-spacing="4" fill="#ecc85a" text-anchor="middle">COMING SOON</text>
+</svg>`;
+const comingSoonSrc = `data:image/svg+xml,${encodeURIComponent(comingSoonSVG)}`;
+
+document.addEventListener('error', (e) => {
+  const img = e.target;
+  if (!(img instanceof HTMLImageElement) || img.dataset.fallbackApplied) return;
+  img.dataset.fallbackApplied = 'true';
+  img.removeAttribute('srcset');
+  img.src = comingSoonSrc;
+}, true);
+
+// --- Missing hero background-photo fallback ---
+document.querySelectorAll('[style*="url("]').forEach(el => {
+  const match = (el.getAttribute('style') || '').match(/url\((['"]?)([^'")]+)\1\)/);
+  const url = match && match[2];
+  if (!url || url.startsWith('data:')) return;
+
+  const probe = new Image();
+  probe.onerror = () => {
+    const badge = document.createElement('span');
+    badge.className = 'bg-photo-missing__badge';
+    badge.textContent = 'Photo Coming Soon';
+    el.appendChild(badge);
+  };
+  probe.src = url;
 });
