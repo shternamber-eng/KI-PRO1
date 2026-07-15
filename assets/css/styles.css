@@ -2436,18 +2436,21 @@ body.dormitory-page .dorm-feature-image {
 }
 body.dormitory-page .dorm-photo-pair img,
 body.dormitory-page .dorm-feature-image img {
-  height: 180px !important;
+  height: 360px !important;
+  cursor: zoom-in;
 }
 body.dormitory-page .dorm-product-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   gap: .85rem !important;
 }
 body.dormitory-page .dorm-product-card img {
-  height: 115px !important;
+  height: 230px !important;
+  cursor: zoom-in;
 }
 body.dormitory-page .dorm-detail-gallery img,
 body.dormitory-page .finish-series__grid img {
-  height: 105px !important;
+  height: 210px !important;
+  cursor: zoom-in;
 }
 body.dormitory-page .finish-series__grid {
   grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
@@ -2477,6 +2480,57 @@ body.dormitory-page .finish-series__grid {
   body.dormitory-page .dorm-product-card img,
   body.dormitory-page .dorm-detail-gallery img,
   body.dormitory-page .finish-series__grid img {
-    height: 112px !important;
+    height: 224px !important;
+  }
+}
+
+.dorm-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(6,4,2,.92);
+}
+.dorm-lightbox.open { display: flex; }
+.dorm-lightbox__panel {
+  position: relative;
+  max-width: min(1100px, 94vw);
+  max-height: 88vh;
+}
+.dorm-lightbox__img {
+  width: auto;
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border: 1px solid var(--border-gold-strong);
+  background: var(--night);
+  box-shadow: 0 18px 70px rgba(0,0,0,.65);
+}
+.dorm-lightbox__caption {
+  margin-top: .75rem;
+  text-align: center;
+  color: var(--ivory-mid);
+  font-size: .9rem;
+}
+.dorm-lightbox__close {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--border-gold-strong);
+  background: var(--obsidian);
+  color: var(--gold-light);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+@media (max-width: 640px) {
+  .dorm-lightbox { padding: 1rem; }
+  .dorm-lightbox__close {
+    top: .5rem;
+    right: .5rem;
   }
 }

@@ -199,3 +199,68 @@ document.querySelectorAll('[style*="url("]').forEach(el => {
   };
   probe.src = url;
 });
+
+// --- Dormitory page image lightbox ---
+if (document.body.classList.contains('dormitory-page')) {
+  const galleryImages = document.querySelectorAll(
+    '.dorm-photo-pair img, .dorm-feature-image img, .dorm-product-card img, .dorm-detail-gallery img, .finish-series__grid img'
+  );
+
+  if (galleryImages.length) {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'dorm-lightbox';
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.innerHTML = `
+      <div class="dorm-lightbox__panel">
+        <button class="dorm-lightbox__close" type="button" aria-label="Close image">&times;</button>
+        <img class="dorm-lightbox__img" src="" alt="">
+        <div class="dorm-lightbox__caption"></div>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+
+    const lightboxImg = lightbox.querySelector('.dorm-lightbox__img');
+    const lightboxCaption = lightbox.querySelector('.dorm-lightbox__caption');
+    const closeBtn = lightbox.querySelector('.dorm-lightbox__close');
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    };
+
+    galleryImages.forEach(img => {
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      img.setAttribute('aria-label', `Open larger image: ${img.alt || 'Dormitory furniture'}`);
+
+      const openLightbox = () => {
+        lightboxImg.src = img.currentSrc || img.src;
+        lightboxImg.alt = img.alt || '';
+        lightboxCaption.textContent = img.alt || '';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      };
+
+      img.addEventListener('click', openLightbox);
+      img.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openLightbox();
+        }
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && lightbox.classList.contains('open')) {
+        closeLightbox();
+      }
+    });
+  }
+}
