@@ -2181,13 +2181,13 @@ strong { font-weight: 600; color: var(--ivory); }
    ================================================================ */
 .dorm-hero {
   position: relative;
-  min-height: 88vh;
+  min-height: 58vh;
   display: flex;
   align-items: center;
   background-color: var(--night);
   background-size: cover;
   background-position: center;
-  padding: 10rem 0 6rem;
+  padding: 8rem 0 4rem;
   border-bottom: 1px solid var(--border-gold-strong);
 }
 .dorm-hero::before {
@@ -2245,26 +2245,32 @@ strong { font-weight: 600; color: var(--ivory); }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: .75rem;
+  max-width: 520px;
+  justify-self: center;
 }
 .dorm-photo-pair img,
 .dorm-feature-image img {
   width: 100%;
-  height: clamp(190px, 28vw, 330px);
+  height: clamp(150px, 22vw, 240px);
   object-fit: contain;
   border: 1px solid var(--border-gold);
   background: var(--night);
 }
 .dorm-photo-pair img:nth-child(2) { margin-top: 1.25rem; }
-.dorm-feature-image img { height: clamp(220px, 32vw, 380px); }
+.dorm-feature-image {
+  max-width: 560px;
+  justify-self: center;
+}
+.dorm-feature-image img { height: clamp(180px, 26vw, 290px); }
 .dorm-product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
 }
 .dorm-product-card {
   background: var(--obsidian);
   border: 1px solid var(--border-gold);
-  padding: 1rem 1rem 1.5rem;
+  padding: .75rem .75rem 1.15rem;
   position: relative;
 }
 .dorm-product-card::before {
@@ -2276,18 +2282,18 @@ strong { font-weight: 600; color: var(--ivory); }
 }
 .dorm-product-card img {
   width: 100%;
-  height: clamp(150px, 18vw, 210px);
+  height: clamp(105px, 13vw, 150px);
   object-fit: contain;
   border: 1px solid var(--border-gold-dim);
   background: var(--night);
-  margin-bottom: 1.25rem;
+  margin-bottom: .9rem;
 }
 .dorm-product-card h3 {
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   margin: 0 .5rem .6rem;
 }
 .dorm-product-card p {
-  font-size: .92rem;
+  font-size: .84rem;
   line-height: 1.65;
   margin: 0 .5rem;
 }
@@ -2299,12 +2305,12 @@ strong { font-weight: 600; color: var(--ivory); }
 }
 .dorm-detail-gallery {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: .75rem;
 }
 .dorm-detail-gallery img {
   width: 100%;
-  height: clamp(150px, 18vw, 210px);
+  height: clamp(110px, 14vw, 160px);
   object-fit: contain;
   border: 1px solid var(--border-gold);
   background: var(--night);
@@ -2314,8 +2320,8 @@ strong { font-weight: 600; color: var(--ivory); }
 .finish-series {
   border: 1px solid var(--border-gold);
   background: var(--deep);
-  padding: 1.25rem;
-  margin-bottom: 2rem;
+  padding: 1rem;
+  margin-bottom: 1.35rem;
   position: relative;
 }
 .finish-series::before {
@@ -2347,12 +2353,12 @@ strong { font-weight: 600; color: var(--ivory); }
 }
 .finish-series__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: .75rem;
 }
 .finish-series__grid img {
   width: 100%;
-  height: clamp(150px, 18vw, 220px);
+  height: clamp(105px, 13vw, 150px);
   object-fit: contain;
   border: 1px solid var(--border-gold-dim);
   background: var(--night);
@@ -2362,14 +2368,14 @@ strong { font-weight: 600; color: var(--ivory); }
   .dorm-split,
   .dorm-split--reverse,
   .dorm-durability-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .dorm-product-grid { grid-template-columns: repeat(2, 1fr); }
+  .dorm-product-grid { grid-template-columns: repeat(3, 1fr); }
   .dorm-detail-gallery,
-  .finish-series__grid { grid-template-columns: repeat(2, 1fr); }
+  .finish-series__grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 768px) {
   .dorm-hero {
-    min-height: 76vh;
-    padding: 8rem 0 4rem;
+    min-height: 52vh;
+    padding: 7rem 0 3rem;
     background-position: center top;
   }
   .dorm-hero::before,
@@ -2383,13 +2389,13 @@ strong { font-weight: 600; color: var(--ivory); }
   .dorm-photo-pair img,
   .dorm-feature-image img,
   .finish-series__grid img {
-    height: clamp(170px, 54vw, 260px);
+    height: clamp(130px, 42vw, 190px);
     max-height: none;
     object-fit: contain;
   }
   .dorm-detail-gallery { grid-template-columns: 1fr 1fr; }
   .dorm-detail-gallery img {
-    height: clamp(150px, 48vw, 230px);
+    height: clamp(120px, 38vw, 170px);
     max-height: none;
     object-fit: contain;
   }
