@@ -2410,3 +2410,73 @@ strong { font-weight: 600; color: var(--ivory); }
 @media (max-width: 520px) {
   .dorm-detail-gallery { grid-template-columns: 1fr; }
 }
+
+/* Hard compact override for the dormitory page. Keep photos visible as thumbnails,
+   not oversized display panels. */
+body.dormitory-page .dorm-hero {
+  min-height: 360px !important;
+  padding: 6rem 0 2.5rem !important;
+}
+body.dormitory-page .dorm-hero h1 {
+  font-size: clamp(2rem, 4.2vw, 3.4rem) !important;
+}
+body.dormitory-page .dorm-hero p {
+  font-size: .98rem !important;
+  margin-bottom: 1.25rem !important;
+}
+body.dormitory-page .section {
+  padding: 3.5rem 0 !important;
+}
+body.dormitory-page .dorm-photo-pair {
+  max-width: 420px !important;
+  gap: .55rem !important;
+}
+body.dormitory-page .dorm-feature-image {
+  max-width: 480px !important;
+}
+body.dormitory-page .dorm-photo-pair img,
+body.dormitory-page .dorm-feature-image img {
+  height: 180px !important;
+}
+body.dormitory-page .dorm-product-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: .85rem !important;
+}
+body.dormitory-page .dorm-product-card img {
+  height: 115px !important;
+}
+body.dormitory-page .dorm-detail-gallery img,
+body.dormitory-page .finish-series__grid img {
+  height: 105px !important;
+}
+body.dormitory-page .finish-series__grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+}
+
+@media (max-width: 900px) {
+  body.dormitory-page .dorm-product-grid,
+  body.dormitory-page .finish-series__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 640px) {
+  body.dormitory-page .dorm-hero {
+    min-height: 320px !important;
+    padding: 5.5rem 0 2rem !important;
+  }
+  body.dormitory-page .section {
+    padding: 2.75rem 0 !important;
+  }
+  body.dormitory-page .dorm-product-grid,
+  body.dormitory-page .finish-series__grid,
+  body.dormitory-page .dorm-detail-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  body.dormitory-page .dorm-photo-pair img,
+  body.dormitory-page .dorm-feature-image img,
+  body.dormitory-page .dorm-product-card img,
+  body.dormitory-page .dorm-detail-gallery img,
+  body.dormitory-page .finish-series__grid img {
+    height: 112px !important;
+  }
+}
